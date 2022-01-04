@@ -17,16 +17,17 @@
         public function __construct(Nxb $nxb)
         {
             $this->nxb = $nxb;
+            $this->middleware('auth');
         }
 
         public function create(){
-            $this->AuthLogin();
+          //  $this->AuthLogin();
             $htmlOption = $this->getNXB($id = '');
             return view('admin.nxbs.add', compact('htmlOption')); 
         }
 
         public function index(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $nxbs = $this->nxb->latest()->paginate(3);
             return view('admin.nxbs.index', compact('nxbs')); 
         }

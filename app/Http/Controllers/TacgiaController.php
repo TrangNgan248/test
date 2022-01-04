@@ -16,16 +16,17 @@
         public function __construct(Tacgia $tacgia)
         {
             $this->tacgia = $tacgia;
+            $this->middleware('auth');
         }
 
         public function create(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $htmlOption = $this->getTacgia($id = '');
             return view('admin.tacgias.add', compact('htmlOption')); 
         }
 
         public function index(){
-            $this->AuthLogin();
+          //  $this->AuthLogin();
             $tacgias = $this->tacgia->latest()->paginate(3);
             return view('admin.tacgias.index', compact('tacgias')); 
         }

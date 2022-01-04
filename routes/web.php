@@ -2,9 +2,15 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertAdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingAdminController;
 use App\Traits\AuthAdminTrait;
+use SebastianBergmann\CodeUnit\FunctionUnit;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,32 +18,37 @@ use App\Traits\AuthAdminTrait;
 */
 
 Route::get('/register',[
-    AdminController::class, 'index'
+    RegisterController::class, 'index'
 ])->name('register');
 Route::post('/register', [
-    AdminController::class, 'store'
+    RegisterController::class, 'store'
 ]);
 
-Route::get('/admin', [
-    AdminController::class, 'LoginAdmin'
+Route::get('/login', [
+    LoginController::class, 'index'
 ])->name('login');
-Route::post('/admin', [
-    AdminController::class, 'postLoginAdmin'
+Route::post('/login', [
+    LoginController::class, 'store'
 ]);
 Route::get('/logout', [
-    AdminController::class, 'logoutAdmin'
+    LogoutController::class, 'logoutAdmin'
 ])->name('logoutAdmin');
 
-Route::get('/home', [
-    AdvertAdminController::class,'home'
-])->name('home');
+// Route::get('/home', [
+//     AdvertAdminController::class,'home'
+// ])->name('home');
+
+Route::get('/home', function(){
+    return view('home');
+})->name('home');
 
 
 Route::prefix('admin')->group(function () {
     Route::prefix('categories')->group(function (){
         Route::get('/',[
             'as'=>'categories.index',
-            'uses'=>'App\Http\Controllers\CategoryController@index',
+            'uses'=>'App\Http\Controllers\CategoryController@index'
+            //CategoryController::class, 'index',
         ]);
         Route::get('/create',[
             'as'=>'categories.create',

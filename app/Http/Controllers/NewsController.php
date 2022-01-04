@@ -23,10 +23,11 @@
         {
             $this->nhomtin = $nhomtin;
             $this->tintuc = $tintuc;
+            $this->middleware('auth');
         }
 
         public function create(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $htmOption = $this->getNhomtin($NT_ViTri = '');
             $data = $this->tintuc->all();
             $recusive = new NewsRecusive($data);
@@ -34,7 +35,7 @@
             return view('admin.news.add', compact('htmOption')); 
         }
         public function index(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $tintucs = $this->tintuc->latest()->paginate(3);
             return view('admin.news.index', compact('tintucs')); 
         }

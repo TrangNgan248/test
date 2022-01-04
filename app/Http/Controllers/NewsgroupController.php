@@ -18,16 +18,17 @@
         {
             $this->nhomtin = $nhomtin;
             $this->tintuc = $tintuc;
+            $this->middleware('auth');
         }
 
         public function create(){
-            $this->AuthLogin();
+          //  $this->AuthLogin();
             $htmlOption = $this->getNhomtin($NT_ViTri = '');
             return view('admin.newsgroup.add', compact('htmlOption')); 
         }
 
         public function index(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $nhomtins = $this->nhomtin->latest()->paginate(3);
             return view('admin.newsgroup.index', compact('nhomtins')); 
         }

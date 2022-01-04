@@ -18,7 +18,7 @@
             {{session('status')}}
         @endif
         <form class="w-full md:w-1/3 bg-white rounded-lg" action="{{route('login')}}" method="post">
-          
+          @csrf
             <div class="flex font-bold justify-center mt-6">
                 <img class="h-20 w-20" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
             </div>

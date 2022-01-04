@@ -33,18 +33,19 @@
             $this->sp=$sp;
             $this->nxb=$nxb;
             $this->tacgia=$tacgia;
+            $this->middleware('auth');
             
         }
 
         public function index(){
-            $this->AuthLogin();
+          //  $this->AuthLogin();
             $saches=$this->sp->paginate(5);
             return view ('admin.sachs.index',compact('saches'));
         }
             
         public function create()
         {
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $htmlOption=$this->getCategory($parentId='');
             $htmlOptionn=$this->getTacgia($id='');    
             $htmlOptionnn=$this->getNXB($id='');     

@@ -16,16 +16,17 @@
         public function __construct(Setting $setting)
         {
             $this->setting=$setting;
+            $this->middleware('auth');
         }
 
         public function index(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             $settings=$this->setting->latest()->paginate(5);
             return view('admin.settings.index',compact('settings'));
         }
 
         public function create(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             return view('admin.settings.add');
         }
 

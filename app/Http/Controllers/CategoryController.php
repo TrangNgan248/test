@@ -15,16 +15,17 @@
         public function __construct(Danhmucsach $danhmucsach)
         {
             $this->danhmucsach=$danhmucsach;
+            $this->middleware('auth');
         }
         public function create()
         {
-            $this->AuthLogin();
+            //$this->AuthLogin();
             $htmlOption=$this->getCategory($parentId='');           
             return view ('admin.category.add',compact('htmlOption'));
         }
         
         public function index(){
-            $this->AuthLogin();
+            //$this->AuthLogin();
             $categories=$this->danhmucsach->latest()->paginate(5);
             return view ('admin.category.index',compact('categories'));
         }

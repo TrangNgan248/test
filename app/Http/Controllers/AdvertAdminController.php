@@ -15,16 +15,18 @@
         use StorageImageTrait;
         use AuthAdminTrait;
         private $advert;
+
         public function home(){
-            $this->AuthLogin();
+           // $this->AuthLogin();
             return view('home');
         }
         public function __construct(Advert $advert)
         {
+            $this->middleware('auth');
             $this->advert=$advert;
         }
         public function index(){
-            $this->AuthLogin();
+            //$this->AuthLogin();
             $adverts=$this->advert->paginate(5);
             return view('admin.advert.index',compact('adverts'));
             
@@ -33,7 +35,7 @@
             // // return view('advert.index',compact('adverts'));
         }
         public function create(){
-            $this->AuthLogin();
+            //$this->AuthLogin();
             return view('admin.advert.add');
         }
         public function store(RequestAdvert $request){
@@ -97,4 +99,3 @@
             }
         }
     }
-?>
