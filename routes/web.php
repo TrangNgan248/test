@@ -3,11 +3,20 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertAdminController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Frontend\CateController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\AdminLogoutController;
+use App\Http\Controllers\AdminRegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingAdminController;
+use App\Http\Controllers\UserCategoryController;
 use App\Traits\AuthAdminTrait;
 use SebastianBergmann\CodeUnit\FunctionUnit;
 
@@ -17,7 +26,9 @@ use SebastianBergmann\CodeUnit\FunctionUnit;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/register',[
+//user
+
+Route::get('/register', [
     RegisterController::class, 'index'
 ])->name('register');
 Route::post('/register', [
@@ -30,20 +41,53 @@ Route::get('/login', [
 Route::post('/login', [
     LoginController::class, 'store'
 ]);
+
 Route::get('/logout', [
-    LogoutController::class, 'logoutAdmin'
-])->name('logoutAdmin');
+    LogoutController::class, 'store'
+])->name('logout');
 
-// Route::get('/home', [
-//     AdvertAdminController::class,'home'
-// ])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/home', function(){
-    return view('home');
-})->name('home');
+Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
+
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+
+Route::get('/category/{id}',[
+   UserCategoryController::class, 'index'
+])->name('category.product');
+
+//admin
+
 
 
 Route::prefix('admin')->group(function () {
+
+    Route::get('/', [
+        AdvertAdminController::class,'home'
+    ]);
+    
+    Route::get('/register',[
+        AdminRegisterController::class, 'index'
+    ])->name('adminregister');
+    Route::post('/register', [
+        AdminRegisterController::class, 'store'
+    ]);
+
+    Route::get('/login', [
+        AdminLoginController::class, 'index'
+    ])->name('adminlogin');
+    Route::post('/login', [
+        AdminLoginController::class, 'store'
+    ]);
+    Route::get('/logout', [
+        AdminLogoutController::class, 'logoutAdmin'
+    ])->name('logoutAdmin');
+
+    Route::get('/home', [
+        AdvertAdminController::class,'home'
+    ])->name('adminhome');
+
     Route::prefix('categories')->group(function (){
         Route::get('/',[
             'as'=>'categories.index',

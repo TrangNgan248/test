@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AdminLoginController extends Controller
 {
     
     public function index()
@@ -24,11 +24,11 @@ class LoginController extends Controller
     if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
         $request->session()->regenerate();
 
-        return redirect()->route('home');
+        return redirect()->route('adminhome');
     }
 
     return back()->withErrors([
-        'username' => 'Sai tên đăng nhập hoặc mật khẩu',
+        'email' => 'Sai tên đăng nhập hoặc mật khẩu',
     ]);
     }
 }

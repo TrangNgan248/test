@@ -14,15 +14,15 @@
 
 <body class="bg-gray-300" style="font-family:Roboto">
     <div class="w-full h-screen flex items-center justify-center">
-    @if(session('status'))
+        @if(session('status'))
             {{session('status')}}
         @endif
-        <form class="w-full md:w-1/3 bg-white rounded-lg" action="{{route('login')}}" method="post">
+        <form class="w-full md:w-1/3 bg-white rounded-lg" action="{{route('adminlogin')}}" method="post">
           @csrf
             <div class="flex font-bold justify-center mt-6">
                 <img class="h-20 w-20" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
             </div>
-            <h2 class="text-3xl text-center text-gray-700 mb-4" >Login Form</h2>
+            <h2 class="text-3xl text-center text-gray-700 mb-4" >Admin Login</h2>
             <div class="px-12 pb-10">
                 <div class="w-full mb-2">
                     <div class="flex items-center">
@@ -56,7 +56,7 @@
                     Log in</button>
                     <div class="mt-6 text-grey-dark">
                         Don't you have an account?
-                        <a class="text-blue-600 hover:underline" href="{{route('register')}}">
+                        <a class="text-blue-600 hover:underline" href="{{route('adminregister')}}">
                             Register
                         </a>
                     </div>

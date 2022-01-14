@@ -24,6 +24,8 @@ class Tintuc extends Model
         'TT_paths'
     ];
 
+    protected $table = 'tintucs';
+
     public function Nhomtins(){
         return $this->belongsTo(Nhomtin::class,'TT_NhomTin','id');
     }

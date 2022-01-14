@@ -15,8 +15,8 @@
 <body class="bg-gray-300" style="font-family:Roboto">
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
-            <h3 class="text-2xl font-bold text-center">Join us</h3>
-            <form action="{{route('register')}}" method="post">
+            <h3 class="text-2xl font-bold text-center">Admin Register</h3>
+            <form action="{{route('adminregister')}}" method="post">
                 @csrf
                 <div class="mt-4">
                     <div>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="mt-6 text-grey-dark">
                         Already have an account?
-                        <a class="text-blue-600 hover:underline" href="{{route('login')}}">
+                        <a class="text-blue-600 hover:underline" href="{{route('adminlogin')}}">
                             Log in
                         </a>
                     </div>
