@@ -15,7 +15,7 @@
         public function __construct(Danhmucsach $danhmucsach)
         {
             $this->danhmucsach=$danhmucsach;
-            $this->middleware('auth');
+           // $this->middleware('auth');
         }
         public function create()
         {
@@ -26,6 +26,9 @@
         
         public function index(){
             //$this->AuthLogin();
+            if(!auth()->check()){
+                return redirect()->route('adminlogin');
+            }
             $categories=$this->danhmucsach->latest()->paginate(5);
             return view ('admin.category.index',compact('categories'));
         }

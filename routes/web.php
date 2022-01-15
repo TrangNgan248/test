@@ -14,6 +14,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingAdminController;
 use App\Http\Controllers\UserCategoryController;
@@ -57,6 +58,9 @@ Route::get('/category/{id}',[
    UserCategoryController::class, 'index'
 ])->name('category.product');
 
+Route::get('/search',[
+    SearchController::class, 'index'
+])->name('search');
 //admin
 
 
@@ -65,7 +69,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/', [
         AdvertAdminController::class,'home'
-    ]);
+    ])->name('adminhome');
     
     Route::get('/register',[
         AdminRegisterController::class, 'index'

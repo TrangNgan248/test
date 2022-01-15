@@ -39,6 +39,9 @@
 
         public function index(){
           //  $this->AuthLogin();
+          if(!auth()->check()){
+            return redirect()->route('adminlogin');
+        }
             $saches=$this->sp->paginate(5);
             return view ('admin.sachs.index',compact('saches'));
         }

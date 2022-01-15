@@ -17,12 +17,13 @@
         private $advert;
 
         public function home(){
-           // $this->AuthLogin();
+           if(!auth()->check()){
+               return redirect()->route('adminlogin');
+           }
             return view('home');
         }
         public function __construct(Advert $advert)
         {
-            $this->middleware('auth');
             $this->advert=$advert;
         }
         public function index(){

@@ -69,15 +69,10 @@
 								<li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								@auth
-								<li>
-									<form action="{{route('logout')}}" method="post">
-										@csrf
-										<button><i class="fa fa-lock"></i> Logout</button>
-									</form>
-								</li>
+								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Logout </a></li>
 								@endauth
 								@guest 
-								<li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Login </a></li>
 								@endguest
 							</ul>
 						</div>
@@ -103,9 +98,11 @@
 						@include('components.mainmenu');
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search" />
-						</div>
+						<form action="{{route('search')}}" method="get">
+							<div class="search_box pull-right">							
+								<input type="text" name="search" placeholder="Search" />													
+							</div>
+						</form>	
 					</div>
 				</div>
 			</div>
