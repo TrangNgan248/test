@@ -3,7 +3,8 @@
     <!-- Brand Logo -->
     <a href="" class="brand-link">
       <img src="https://bktoanthu.com/images/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Group 1</span>
+      <span class="brand-text font-weight-light">
+        ADMIN</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,7 +15,7 @@
           <img src="https://scontent.fhan5-4.fna.fbcdn.net/v/t1.6435-9/152406961_1802432383270100_3355430014002109187_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=8631f5&_nc_ohc=3Yrx4Na3mp8AX9-k55-&_nc_ht=scontent.fhan5-4.fna&oh=aa958872a53416c145c25d61d767af58&oe=618F2A1B" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{route('home')}}" class="d-block">GROUP 1</a>
+          <a href="{{route('home')}}" class="d-block">ADMIN</a>
         </div>
       </div>
 

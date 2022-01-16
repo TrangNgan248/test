@@ -135,6 +135,7 @@
                     'S_Chitiet'=>$request->S_Chitiet,
                     'S_TuKhoa'=>$request->S_TuKhoa,
                     'S_NXBId'=>$request->S_NXBId,
+                    'S_SoLuong'=>$request->S_SoLuong,
                     'S_TacGiaId'=>$request->S_TacGiaId
                 ];
                 $dataUp=$this->storageTraitUploat($request,'S_Anh','sachs');
