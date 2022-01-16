@@ -14,6 +14,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SachController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingAdminController;
@@ -151,10 +152,7 @@ Route::prefix('admin')->group(function () {
     });
     
     Route::prefix('sachs')->group(function (){
-        Route::get('/',[
-            'as'=>'sachs.index',
-            'uses'=>'App\Http\Controllers\SachController@index',
-        ]);
+        Route::get('/', [SachController::class, 'index'])->name('sachs.index');
         Route::get('/create',[
             'as'=>'sachs.create',
             'uses'=>'App\Http\Controllers\SachController@create',
